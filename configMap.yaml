@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: registry-service
+data:
+  application.properties: |-
+    message: I am from config map updated
+    port: 5656
+    server.port: 8099

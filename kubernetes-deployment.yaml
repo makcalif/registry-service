@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry
+spec:
+  selector:
+    matchLabels:
+      app: registry
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: registry
+    spec:
+      containers:
+        - name: registry-service
+          image: mkacr.azurecr.io/registry-service:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8761
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: registry-service
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8761
+  type: ClusterIP
+  selector:
+    app: registry
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: registry-service-front
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8761
+  selector:
+    app: registry

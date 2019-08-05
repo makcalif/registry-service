@@ -3,12 +3,12 @@
 spring:
   application:
     name: registry-service #name of the application
-  cloud:
-    config:
-      uri: http://localhost:8888 #where the config-service is running
-      fail-fast: true #the service will not run if it can't reach the config-service
-      password: 1234 #password of the config-service
-      username: user #username of the config-service
+#  cloud:
+#    config:
+#      uri: http://localhost:8888 #where the config-service is running
+#      fail-fast: true #the service will not run if it can't reach the config-service
+#      password: 1234 #password of the config-service
+#      username: user #username of the config-service
 
 eureka:
   instance:
@@ -16,3 +16,40 @@ eureka:
   client:
     registerWithEureka: false #tells the built-in eureka client to not register itself with eureka, because we should act as a server
     fetchRegistry: false
+
+  cloud:
+    kubernetes:
+      enabled: true
+      config:
+        enabled: true
+      reload:
+        enabled: true
+        mode: event
+        strategy: refresh
+      trust:
+        certificates: true
+
+logging:
+  level:
+    org.springframework.cloud.kubernetes: DEBUG
+
+management:
+  endpoint:
+    restart:
+      enabled: true
+
+  profiles:
+    active:
+      - local
+---
+spring:
+  profiles: local
+
+message: i am static
+port: 4000
+---
+spring:
+  profiles: kubernetes
+
+message: I should be overriden by configMap
+port: 9999
