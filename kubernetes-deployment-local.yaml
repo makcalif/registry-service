@@ -27,7 +27,7 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8761
+      targetPort: 8099  # from config map
   type: ClusterIP
   selector:
     app: registry
@@ -41,7 +41,7 @@ spec:
   type: LoadBalancer
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 8761
+      port: 8099
+      targetPort: 8099   # from config map
   selector:
     app: registry
