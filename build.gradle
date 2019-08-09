@@ -20,9 +20,14 @@ ext {
 dependencies {
 
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-kubernetes-config', version: '1.0.2.RELEASE'
-	//implementation 'org.springframework.cloud:spring-cloud-starter-config'
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+	//compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-kubernetes-ribbon', version: '0.3.0.RELEASE'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-ribbon', version: '2.1.2.RELEASE'
+
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '2.1.2.RELEASE'
+
+//implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	//implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+
 
 	implementation group: 'javax.xml', name: 'jaxb-api', version: '2.1'
 
