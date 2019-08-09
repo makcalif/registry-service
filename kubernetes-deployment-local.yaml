@@ -17,7 +17,7 @@ spec:
           image: registry-service:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8761
+            - containerPort: 8099
 ---
 kind: Service
 apiVersion: v1
@@ -26,8 +26,8 @@ metadata:
 spec:
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 8761
+      port: 8099
+      targetPort: 8099
   type: ClusterIP
   selector:
     app: registry
@@ -41,7 +41,7 @@ spec:
   type: LoadBalancer
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 8761
+      port: 8099
+      targetPort: 8099
   selector:
     app: registry
