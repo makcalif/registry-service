@@ -15,6 +15,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 //@EnableConfigurationProperties
 public class RegistryServiceApplication implements CommandLineRunner {
 
+	@Value("${server.port}")
+	String serverPort;
+
 	@Autowired
 	Data data;
 
@@ -26,5 +29,6 @@ public class RegistryServiceApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println("config msg>>>>>>>>>>>:" + data.getMessage());
 		System.out.println("config port >>>>>>>>>>>:" + data.getPort());
+		System.out.println("server port >>>>>>>>>>>:" + serverPort);
 	}
 }

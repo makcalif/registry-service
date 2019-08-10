@@ -18,16 +18,23 @@ ext {
 }
 
 dependencies {
-
-	compile group: 'org.springframework.cloud', name: 'spring-cloud-kubernetes-config', version: '1.0.2.RELEASE'
-	//compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-kubernetes-ribbon', version: '0.3.0.RELEASE'
-	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-ribbon', version: '2.1.2.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//compile group: 'org.springframework.cloud', name: 'spring-cloud-kubernetes-config', version: '1.0.2.RELEASE'
 
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '2.1.2.RELEASE'
 
-//implementation 'org.springframework.cloud:spring-cloud-starter-config'
-	//implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+	// copied from persons project
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-ribbon', version: '2.1.2.RELEASE'
+	// above is probably needed along with kubernetes ribbon
+	// as per: https://dzone.com/articles/quick-guide-to-microservices-with-kubernetes-sprin
+	// Spring Cloud Kubernetes Ribbon provides some beans that force Ribbon to communicate with
+	// the Kubernetes API through Fabric8 KubernetesClient.
 
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-kubernetes-ribbon', version: '0.3.0.RELEASE'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-kubernetes', version: '0.2.0.RELEASE'
+
+	//implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+//implementation 'org.springframework.cloud:spring-cloud-starter-config'
 
 	implementation group: 'javax.xml', name: 'jaxb-api', version: '2.1'
 

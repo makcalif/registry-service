@@ -1,5 +1,6 @@
 #This file is the entrypoint for spring to know where to look for the configuration file and hold the initial configuration
-
+server:
+  port: 8090
 spring:
   application:
     name: registry-service #name of the application
@@ -53,3 +54,5 @@ spring:
 
 message: I should be overriden by configMap
 port: 9999
+server:
+  port: 8099
