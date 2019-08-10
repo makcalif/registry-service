@@ -1,6 +1,6 @@
 #This file is the entrypoint for spring to know where to look for the configuration file and hold the initial configuration
 server:
-  port: 8090
+  port: 8088
 spring:
   application:
     name: registry-service #name of the application
